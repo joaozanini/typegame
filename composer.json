@@ -1,0 +1,23 @@
+{
+    "name": "joaozanini/typegame",
+    "description": "Um jogo de digitação baseado em PHP.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "João Vitor Zanini Pedro",
+            "email": "joaozanini.pessoal@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "TypeGame\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
