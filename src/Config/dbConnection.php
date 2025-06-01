@@ -1,9 +1,9 @@
 <?php
-require 'vendor/autoload.php'; // Autoload do Composer
+require_once __DIR__ . '../../../vendor/autoload.php';
 
 function getMongoDB()
 {
-    $config = require 'applicationProprierties';
+    $config = require 'applicationProperties.php';
 
     $url      = $config['mongodb']['url'];
     $dbName   = $config['mongodb']['database'];
@@ -11,5 +11,6 @@ function getMongoDB()
 
     $client = new MongoDB\Client($url, $options);
 
+    echo "<script>alert('conectado');</script>";
     return $client->selectDatabase($dbName);
 }
