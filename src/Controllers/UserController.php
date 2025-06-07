@@ -69,8 +69,18 @@ function handlePostRequest() {
     $hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
 
     if (createUser($username, $nickname, $email, $hashedPassword)) {
-        header("Location: /typegame/public/index.php");
-        exit();
+
+    $user = findUserByEmail($email);
+
+    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['username'] = $user['username'];
+    $_SESSION['nickname'] = $user['nickname'];
+    $_SESSION['email'] = $user['email'];
+
+    // Redirecionar
+    header("Location: /typegame/public/index.php");
+    exit();
+    
     } else {
         http_response_code(500);
         echo json_encode(["error" => "Erro ao criar o usuário."]);
