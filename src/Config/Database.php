@@ -1,17 +1,21 @@
 <?php
 
-$applicationproperties = parse_ini_file("application.properties");
+function db_connect() {
+  $applicationproperties = parse_ini_file("application.properties");
 
-$host = $applicationproperties['db.host'];
-$port = $applicationproperties['db.port'];
-$dbname = $applicationproperties['db.name'];
-$user = $applicationproperties['db.user'];
-$password = $applicationproperties['db.password'];
+  $host = $applicationproperties['db.host'];
+  $port = $applicationproperties['db.port'];
+  $dbname = $applicationproperties['db.name'];
+  $user = $applicationproperties['db.user'];
+  $password = $applicationproperties['db.password'];
 
-$conn = new mysqli($host, $user, $password, $dbname, $port);
+  $conn = new mysqli($host, $user, $password, $dbname, $port);
 
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  return $conn;
 }
-echo "Connected successfully";
+
 ?>
