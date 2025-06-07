@@ -15,17 +15,9 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-filter: blur(0.3px) brightness(1.1);
-background-image: repeating-linear-gradient(
-  to bottom,
-  rgba(0, 0, 0, 0.171) 0px,
-  rgba(0, 255, 0, 0.08) 2px,
-  transparent 5px,
-  transparent 3px
-);
+  filter: blur(0.3px) brightness(1.1);
+  background-image: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.171) 0px, rgba(0, 255, 0, 0.08) 2px, transparent 5px, transparent 3px);
   z-index: 999;
-  
-
 }
 
 @keyframes flicker {
@@ -110,14 +102,23 @@ input{
   border: #08ee83;
 }
 
-.botao{
-  font-family: 'VT323';
-  color: #08ee83;
+.botao {
   background-color: transparent;
   border: 2px solid #08ee83;
+  color: #08ee83;
+  font-family: 'VT323';
+  font-size: 18px;
   width: 100px;
   height: 30px;
-  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+.botao:hover{ 
+  background-color: #08ee83;
+  color: #031e11;
 }
 
 

@@ -1,3 +1,10 @@
+<?php
+
+// caso o usuário já esteja logado, redireciona para a página inicial
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +13,19 @@
     <title>Registro</title>
     <link rel="stylesheet" href="css/register.css">
 </head>
-<body>    
+<body>
     <form id="form" method="post" action="">
       <div class="form-wrapper">
           <h1>Registro</h1>
+
           <div class="form-group">
-            <label for="user">Nome de usuário:</label>
-            <input name="nomedeusuario" type="text" id="user" class="form-content">
-            <li class="erro"></li>
+            <label for="username">Username:</label>
+            <input name="username" type="text" id="username" class="form-content"> <li class="erro"></li>
+          </div>
+
+          <div class="form-group">
+            <label for="nickname">Nickname:</label>
+            <input name="nickname" type="text" id="nickname" class="form-content"> <li class="erro"></li>
           </div>
 
           <div class="form-group">
@@ -23,18 +35,18 @@
           </div>
 
           <div class="form-group">
-            <label for="senha">Senha:</label>
+            <label for="password1">Password:</label>
             <input name="password1" type="password" id="senha" class="form-content">
             <li class="erro"></li>
           </div>
 
           <div class="form-group">
-            <label for="confirm">Confirme a senha:</label>
-            <input name="password2" type="password" id="confirm" class="form-content">
+            <label for="password2">Password Confirmation:</label>
+            <input name="password2" type="password" id="password2" class="form-content">
             <li class="erro"></li>
           </div>
 
-          <input type="submit" id="submit" value="Continuar" class="botao">
+          <button type="submit" class="botao">Submit</button>
       </div>
     </form>
 
