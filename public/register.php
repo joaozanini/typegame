@@ -7,30 +7,30 @@
     <link rel="stylesheet" href="css/register.css">
 </head>
 <body>    
-    <form id="form">
+    <form id="form" method="post" action="">
       <div class="form-wrapper">
           <h1>Registro</h1>
           <div class="form-group">
             <label for="user">Nome de usuário:</label>
-            <input type="text" id="user" class="form-content">
+            <input name="nomedeusuario" type="text" id="user" class="form-content">
             <li class="erro"></li>
           </div>
 
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="text" id="email" class="form-content">
+            <input name="email" type="text" id="email" class="form-content">
             <li class="erro"></li>
           </div>
 
           <div class="form-group">
             <label for="senha">Senha:</label>
-            <input type="password" id="senha" class="form-content">
+            <input name="password1" type="password" id="senha" class="form-content">
             <li class="erro"></li>
           </div>
 
           <div class="form-group">
             <label for="confirm">Confirme a senha:</label>
-            <input type="password" id="confirm" class="form-content">
+            <input name="password2" type="password" id="confirm" class="form-content">
             <li class="erro"></li>
           </div>
 
