@@ -69,8 +69,8 @@ function handlePostRequest() {
     $hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
 
     if (createUser($username, $nickname, $email, $hashedPassword)) {
-        http_response_code(201);
-        echo json_encode(["message" => "Cadastro realizado com sucesso."]);
+        header("Location: /typegame/public/index.php");
+        exit();
     } else {
         http_response_code(500);
         echo json_encode(["error" => "Erro ao criar o usuário."]);
