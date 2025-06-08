@@ -8,9 +8,10 @@
 ## Funcionalidades
 - Jogo de digitação
 - Registro e login de usuários
-- Rankings geral e por liga (geral e semanal)
-- Criação e entrada em ligas com palavra-chave
-- Relatório de partidas
+- Rankings geral e por Clã (geral e semanal)
+- Criação e entrada em Clãs
+- Histórico de partidas
+- Estatísticas de Usuário
 
 ## Estrutura
 - `public/`: interface e páginas principais
@@ -18,8 +19,9 @@
 
 ## Execução
 1. Instale o Xampp
-2. Clone o projeto em ./Xampp/htdocs
-3. 
+2. Clone o projeto em `./Xampp/htdocs`
+3. Abra o Xampp e inicie o Apache
+4. Acesse `http://localhost/typegame/public/register.php`
 
 ## Autores
 - João Vitor Zanini Pedro (Arquitetura & Back-end)
