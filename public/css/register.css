@@ -98,8 +98,11 @@ form {
 }
 
 input{
-  background-color: #038509;
+  background-color: #087741c7;
   border: #08ee83;
+  font-family: 'VT323';
+  color: #08ee83;
+  font-size: 20px;
 }
 
 .botao {
@@ -122,3 +125,48 @@ input{
 }
 
 
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #087741c7 inset;
+  -webkit-text-fill-color: #08ee83; 
+  caret-color: #08ee83; 
+  transition: background-color 9999s ease-in-out 0s; 
+}
+
+::selection{
+  background: #08ee83;
+  color: #031e11;
+}
+
+input::selection, h1::selection, label::selection, li::selection{
+  background: #08ee83;
+  color: #031e11;
+}
+
+input:focus{
+  border: #08ee83;
+  outline: none;
+}
+
+.eye{
+  background-color: #087741c7;
+  color: #08ee83;
+  font-family: 'VT323';
+  font-size: 18px;
+  height: 28.1px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+
+
+}
+
+.eye:hover{
+  background-color: #08ee83;
+  color: #031e11;
+}
+
+.password-wrapper{
+    display: flex;
+    align-items: center;
+}

@@ -20,33 +20,43 @@
 
           <div class="form-group">
             <label for="username">Username:</label>
-            <input name="username" type="text" id="username" class="form-content"> <li class="erro"></li>
+            <input name="username" type="text" id="username" class="form-content" spellcheck="false"> 
+            <li class="erro"></li>
           </div>
 
           <div class="form-group">
             <label for="nickname">Nickname:</label>
-            <input name="nickname" type="text" id="nickname" class="form-content"> <li class="erro"></li>
+            <input name="nickname" type="text" id="nickname" class="form-content" spellcheck="false"> 
+            <li class="erro"></li>
           </div>
 
           <div class="form-group">
             <label for="email">Email:</label>
-            <input name="email" type="text" id="email" class="form-content">
+            <input name="email" type="text" id="email" class="form-content" spellcheck="false">
             <li class="erro"></li>
           </div>
 
           <div class="form-group">
             <label for="password1">Password:</label>
-            <input name="password1" type="password" id="senha" class="form-content">
+            <div class="password-wrapper">
+              <input name="password1" type="password" id="senha" class="form-content">
+              <input type="button" value="<o>" class="eye" id="show1">
+            </div>
             <li class="erro"></li>
           </div>
 
           <div class="form-group">
             <label for="password2">Password Confirmation:</label>
-            <input name="password2" type="password" id="password2" class="form-content">
+            <div class="password-wrapper">
+              <input name="password2" type="password" id="password2" class="form-content">
+              <input type="button" value="<o>" class="eye" id="show2">
+            </div>
             <li class="erro"></li>
           </div>
-
+          <div>
+          <input type="button" class="botao" value="Voltar">
           <button type="submit" class="botao">Submit</button>
+          </div>
       </div>
     </form>
 
