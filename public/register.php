@@ -54,7 +54,7 @@
             <li class="erro"></li>
           </div>
           <div>
-          <input type="button" class="botao" value="Voltar">
+          <input type="button" class="botao" value="Back">
           <button type="submit" class="botao">Submit</button>
           </div>
       </div>
@@ -63,6 +63,6 @@
     <div class="crt-overlay"></div>
     <div class="frame"></div>
 
-    <script src="js/validation.js"></script>
+    <script src="js/registerValidation.js"></script>
 </body>
 </html>
