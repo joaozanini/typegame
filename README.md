@@ -2,8 +2,8 @@
 
 ## Tecnologias
 - PHP 7+
-- MongoDB
-- HTML5, CSS3, JavaScript (jQuery)
+- MySQL
+- HTML5, CSS3, JavaScript, jQuery
 
 ## Funcionalidades
 - Jogo de digitação
@@ -17,13 +17,11 @@
 - `src/`: back-end em PHP usando padrão MVC
 
 ## Execução
-1. Instale dependências com `composer install`
-2. Configure o MongoDB em `applicationProperties.php`
-3. Instale o Xampp
-3. colocar o projeto em `Xampp/htdocs`
-4. Acesse `typegame/public/index.php` pelo navegador
+1. Instale o Xampp
+2. Clone o projeto em ./Xampp/htdocs
+3. 
 
 ## Autores
 - João Vitor Zanini Pedro (Arquitetura & Back-end)
-- Lucas Giuraud (Banco de Dados)
-- Guilherme
+- Lucas Giuraud (Arquitetura & Banco de Dados)
+- Guilherme Gemniczak da Rocha (Design & Frontend)
