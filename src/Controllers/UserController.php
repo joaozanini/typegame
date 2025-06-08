@@ -95,7 +95,7 @@ function handlePostRequest() {
     $_SESSION['email'] = $user['email'];
 
     // Redirecionar
-    header("Location: /typegame/public/index.php");
+    header("Location: /typegame/public/login.php");
     exit();
     
     } else {

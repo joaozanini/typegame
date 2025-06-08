@@ -20,26 +20,26 @@
 
           <div class="form-group">
             <label for="username">Username:</label>
-            <input name="username" type="text" id="username" class="form-content" spellcheck="false"> 
+            <input name="username" type="text" id="username" class="form-content" spellcheck="false" required> 
             <li class="erro"></li>
           </div>
 
           <div class="form-group">
             <label for="nickname">Nickname:</label>
-            <input name="nickname" type="text" id="nickname" class="form-content" spellcheck="false"> 
+            <input name="nickname" type="text" id="nickname" class="form-content" spellcheck="false" required> 
             <li class="erro"></li>
           </div>
 
           <div class="form-group">
             <label for="email">Email:</label>
-            <input name="email" type="text" id="email" class="form-content" spellcheck="false">
+            <input name="email" type="text" id="email" class="form-content" spellcheck="false" required>
             <li class="erro"></li>
           </div>
 
           <div class="form-group">
             <label for="password1">Password:</label>
             <div class="password-wrapper">
-              <input name="password1" type="password" id="senha" class="form-content">
+              <input name="password1" type="password" id="senha" class="form-content" required>
               <input type="button" value="<o>" class="eye" id="show1">
             </div>
             <li class="erro"></li>
@@ -48,7 +48,7 @@
           <div class="form-group">
             <label for="password2">Password Confirmation:</label>
             <div class="password-wrapper">
-              <input name="password2" type="password" id="password2" class="form-content">
+              <input name="password2" type="password" id="password2" class="form-content" required>
               <input type="button" value="<o>" class="eye" id="show2">
             </div>
             <li class="erro"></li>
@@ -63,6 +63,6 @@
     <div class="crt-overlay"></div>
     <div class="frame"></div>
 
-    <script src="js/register.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 </html>
