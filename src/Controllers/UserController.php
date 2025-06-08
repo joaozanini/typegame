@@ -32,6 +32,21 @@ function handleGetRequest() {
 }
 
 function handlePostRequest() {
+    session_start();
+
+    // Coletando dados do formulário
+    $username = $_POST["username"] ?? null;
+    $nickname = $_POST["nickname"] ?? null;
+    $email = $_POST["email"] ?? null;
+    $password1 = $_POST["password1"] ?? null;
+    $password2 = $_POST["password2"] ?? null;
+
+    // Validações básicas
+    if (!$username || !$nickname || !$email || !$password1 || !$password2) {
+        http_response_code(400);
+        echo json_encode(["error" => "Todos os campos são obrigatórios."]);
+        return;
+    }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         http_response_code(400);
@@ -39,7 +54,7 @@ function handlePostRequest() {
         return;
     }
 
-    if (User::emailExists($email)) {
+    if (emailExists($email)) {
         http_response_code(409);
         echo json_encode(["error" => "Este e-mail já está em uso."]);
         return;
@@ -52,6 +67,24 @@ function handlePostRequest() {
     }
 
     $hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
+
+    if (createUser($username, $nickname, $email, $hashedPassword)) {
+
+    $user = findUserByEmail($email);
+
+    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['username'] = $user['username'];
+    $_SESSION['nickname'] = $user['nickname'];
+    $_SESSION['email'] = $user['email'];
+
+    // Redirecionar
+    header("Location: /typegame/public/index.php");
+    exit();
+    
+    } else {
+        http_response_code(500);
+        echo json_encode(["error" => "Erro ao criar o usuário."]);
+    }
 }
 
 function handlePutRequest() {

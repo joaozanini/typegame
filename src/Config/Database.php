@@ -1,7 +1,7 @@
 <?php
 
 function db_connect() {
-  $applicationproperties = parse_ini_file("application.properties");
+  $applicationproperties = parse_ini_file("applicationProperties.ini");
 
   $host = $applicationproperties['db.host'];
   $port = $applicationproperties['db.port'];
