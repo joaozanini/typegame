@@ -1,5 +1,5 @@
 function getErrorElement(input) {
-  return input.parentElement.querySelector('.erro');
+  return input.closest('.form-group').querySelector('.erro');
 }
 
 function removeAllSpaces(str) {
@@ -17,13 +17,15 @@ document.getElementById("form").addEventListener('submit', function(e){
 
 
     //variáveis
-    let usernamein = document.getElementById("user")
+    let usernamein = document.getElementById("username")
+    let nicknamein = document.getElementById("nickname")
     let emailin = document.getElementById("email")
     let senhain = document.getElementById("senha")
-    let confirmin = document.getElementById("confirm")
+    let confirmin = document.getElementById("password2")
 
 
     let usernameError = getErrorElement(usernamein);
+    let nicknameError = getErrorElement(nicknamein)
     let emailError = getErrorElement(emailin);
     let senhaError = getErrorElement(senhain);
     let confirmError = getErrorElement(confirmin);
@@ -35,10 +37,22 @@ document.getElementById("form").addEventListener('submit', function(e){
 
     let username = usernamein.value
 
+
     if(removeAllSpaces(username) == ""){
         usernameError.textContent = "Nome de usuário precisa estar preenchido!"
         veri = false
     }
+
+    //Tratando nickname
+
+    nicknameError.textContent = "";
+    let nickname = nicknamein.value
+
+    if(removeAllSpaces(nickname) == ""){
+      nicknameError.textContent = "Apelido precisa estar preenchido"
+      veri = false
+    }
+
 
   //Tratando Email
 
@@ -61,7 +75,7 @@ document.getElementById("form").addEventListener('submit', function(e){
 
   senhaError.textContent = ""
   let senha = senhain.value
-
+  
 
   if(removeAllSpaces(senha) == ""){
     senhaError.textContent = "Senha precisa estar preenchida com letras e números!"
@@ -75,7 +89,8 @@ document.getElementById("form").addEventListener('submit', function(e){
   }else if(/[\u00C0-\u017F]/.test(senha)){
     senhaError.textContent = "Senha não pode possuir acentos!"
     veri = false
-  
+  }else if(senha.length < 8){
+    senhaError.textContent = "Senha não pode possuir menos que 8 caracteres."
   }
 
 
@@ -96,3 +111,36 @@ document.getElementById("form").addEventListener('submit', function(e){
   }
 
 })
+
+const senhaInput = document.getElementById("senha");
+const confirmInput = document.getElementById("password2");
+const eyeBtn = document.getElementById("show1")
+const toggleConfirmBtn = document.getElementById("show2")
+
+if (eyeBtn && senhaInput) {
+  eyeBtn.addEventListener("mousedown", () => {
+    senhaInput.type = "text";
+  });
+
+  eyeBtn.addEventListener("mouseup", () => {
+    senhaInput.type = "password";
+  });
+
+  eyeBtn.addEventListener("mouseleave", () => {
+    senhaInput.type = "password";
+  });
+}
+
+if (toggleConfirmBtn && confirmInput) {
+  toggleConfirmBtn.onmousedown = () => {
+    confirmInput.type = "text";
+  };
+
+  toggleConfirmBtn.onmouseup = () => {
+    confirmInput.type = "password";
+  };
+
+  toggleConfirmBtn.onmouseleave = () => {
+    confirmInput.type = "password";
+  };
+}
