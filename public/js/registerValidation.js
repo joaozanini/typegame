@@ -39,7 +39,7 @@ document.getElementById("form").addEventListener('submit', function(e){
 
 
     if(removeAllSpaces(username) == ""){
-        usernameError.textContent = "Nome de usuário precisa estar preenchido!"
+        usernameError.textContent = "Username needs to be filled!"
         veri = false
     }
 
@@ -49,7 +49,7 @@ document.getElementById("form").addEventListener('submit', function(e){
     let nickname = nicknamein.value
 
     if(removeAllSpaces(nickname) == ""){
-      nicknameError.textContent = "Apelido precisa estar preenchido"
+      nicknameError.textContent = "Nickname needs to be filled!"
       veri = false
     }
 
@@ -63,10 +63,10 @@ document.getElementById("form").addEventListener('submit', function(e){
   email = email.trim()
 
   if (email == ""){
-    emailError.textContent = "Email precisa estar preenchido!"
+    emailError.textContent = "Email needs to be filled!"
     veri = false
   }else if(!validateEmail(email)){
-    emailError.textContent = "Email invalido!"
+    emailError.textContent = "Invalid email!"
     veri = false
   }
 
@@ -78,19 +78,20 @@ document.getElementById("form").addEventListener('submit', function(e){
   
 
   if(removeAllSpaces(senha) == ""){
-    senhaError.textContent = "Senha precisa estar preenchida com letras e números!"
+    senhaError.textContent = "Password needs to be filled with letters and numbers!"
     veri = false
   } else if(!/[a-zA-Z]/.test(senha)){
-    senhaError.textContent = "Senha precisa possuir letras! Acentos não são permitidos"
+    senhaError.textContent = "Needs to contain letters, special characters like (', @, ~, etc...) are not allowed! "
     veri = false
   } else if(!/\d/.test(senha)){
-    senhaError.textContent = "Senha precisa conter números!"
+    senhaError.textContent = "Needs to contain numbers!"
     veri = false
   }else if(/[\u00C0-\u017F]/.test(senha)){
-    senhaError.textContent = "Senha não pode possuir acentos!"
+    senhaError.textContent = "Special characters are not allowed!"
     veri = false
   }else if(senha.length < 8){
-    senhaError.textContent = "Senha não pode possuir menos que 8 caracteres."
+    senhaError.textContent = "Needs to have more than 8 characteres"
+    veri=false
   }
 
 
@@ -100,11 +101,10 @@ document.getElementById("form").addEventListener('submit', function(e){
   let confirm = confirmin.value
 
   if(confirm != senha){
-    confirmError.textContent = "As senhas não batem, escreva novamente!"
+    confirmError.textContent = "Passwords do not match, try again!"
     veri = false
   }
 
-  console.log(veri)
 
   if(!veri){
     e.preventDefault()
