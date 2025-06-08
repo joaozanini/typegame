@@ -52,11 +52,11 @@ function handlePostRequest() {
     session_start();
 
     // Coletando dados do formulário
-    $username = $_POST["username"] ?? null;
-    $nickname = $_POST["nickname"] ?? null;
-    $email = $_POST["email"] ?? null;
-    $password1 = $_POST["password1"] ?? null;
-    $password2 = $_POST["password2"] ?? null;
+    $username = $_POST["username"];
+    $nickname = $_POST["nickname"];
+    $email = $_POST["email"];
+    $password1 = $_POST["password1"];
+    $password2 = $_POST["password2"];
 
     // Validações básicas
     if (!$username || !$nickname || !$email || !$password1 || !$password2) {
