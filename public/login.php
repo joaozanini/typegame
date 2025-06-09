@@ -8,19 +8,19 @@
 </head>
 <body>
 <div class="main">
-    <form id="form">
+    <form id="form" method="post" action="../src/Controllers/LoginController.php">
         <div class="form-wrapper">
             <h1>Login</h1>
             <div class="form-group">
-                <label for="user">Email:</label>
-                <input type="text" id="email" class="form-content" spellcheck="false">
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email" class="form-content" spellcheck="false">
                 <li class="erro"></li>
             </div>
 
             <div class="form-group">
-                <label for="senha">Password:</label>
+                <label for="password">Password:</label>
                 <div class="password-wrapper">
-                    <input name="password1" type="password" id="senha" class="form-content">
+                    <input name="password" type="password" id="senha" class="form-content">
                     <input type="button" value="<o>" class="eye" id="show1">
                 </div>
                 <li class="erro"></li>

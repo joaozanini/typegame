@@ -1,9 +1,4 @@
 <?php
-session_start();
-
-if (isset($_SESSION['user_id'])) {
-    echo "Usuário logado. ID: " . $_SESSION['user_id'];
-} else {
-    echo "Usuário não está logado.";
-}
+require_once __DIR__ . '/../src/Controllers/UserController.php';
+echo findUserByEmail('lovesongs2@gmail.com')
 ?>

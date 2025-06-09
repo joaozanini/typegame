@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Digitação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #text-display {
+            font-size: 24px;
+            margin: 20px 0;
+            line-height: 1.5;
+            letter-spacing: 1px;
+            min-height: 150px;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        #text-display span {
+            position: relative;
+        }
+        #text-display span.current {
+            background-color: #ffffcc;
+            text-decoration: underline;
+        }
+        #text-display span.correct {
+            color: #27ae60;
+            font-weight: bold;
+}
+
+        #text-display span.incorrect {
+            color: #e74c3c;
+            text-decoration: underline wavy;
+            background-color: #ffebee;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+        #stats {
+            font-size: 18px;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border-radius: 5px;
+        }
+        .instructions {
+            margin-bottom: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jogo de Digitação</h1>
+    <div class="instructions">
+        Comece a digitar o texto abaixo. Pressione qualquer tecla para começar.
+    </div>
+    <div id="text-display"></div>
+    <div id="stats"></div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

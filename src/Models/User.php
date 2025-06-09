@@ -64,7 +64,7 @@ function findUserById($id) {
 
 function findUserByUsername($user) {
     $conn = db_connect();
-    $stmt = $conn->prepare("SELECT * FROM user WHERE user = ?");
+    $stmt = $conn->prepare("SELECT * FROM user WHERE username = ?");
     $stmt->bind_param("s", $user);
     $stmt->execute();
     $result = $stmt->get_result();
