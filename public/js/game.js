@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let characters = [];
 
     // Carrega as palavras do JSONa
-    fetch('words.json')
+    fetch('js/words.json')
         .then(response => {
             if (!response.ok) throw new Error('Erro ao carregar words.json');
             return response.json();
@@ -129,12 +129,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const accuracy = Math.round(((totalChars - errorCount) / totalChars) * 100);
 
         statsContainer.innerHTML = `
-            <h3>Resultado</h3>
-            <p>🔹 Tempo: ${totalTime.toFixed(1)} segundos</p>
-            <p>🔹 Velocidade: ${wpm} PPM</p>
-            <p>🔹 Precisão: ${accuracy}%</p>
-            <p>🔹 Erros: ${errorCount}</p>
-            <button onclick="location.reload()">↻ Jogar Novamente</button>
+            <h3>Result</h3>
+            <p>Time: ${totalTime.toFixed(1)} segundos</p>
+            <p>Speed: ${wpm} WPM</p>
+            <p>Precision: ${accuracy}%</p>
+            <p>Errors: ${errorCount}</p>
+            <button onclick="location.reload()">↻ Play Again</button>
         `;
     }
 });
