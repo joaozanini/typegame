@@ -1,1 +1,67 @@
 @import url(https://fonts.googleapis.com/css?family=VT323);
+
+* {
+  color: #08ee83;
+  font-family: 'VT323';
+  font-size: 20px;
+}
+
+div {
+  background-color: #031e11;
+}
+
+#text-display {
+  margin: 20px 0;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  min-height: 150px;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#text-display span {
+  position: relative;
+}
+
+#text-display span.current {
+  background-color: #ffffcc;
+  text-decoration: underline;
+}
+
+#text-display span.correct {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+#text-display span.incorrect {
+  color: #e74c3c;
+  text-decoration: underline wavy;
+  background-color: #ffebee;
+}
+
+button {
+  background-color: transparent;
+  border: 2px solid #08ee83;
+  color: #08ee83;
+  font-family: 'VT323';
+  font-size: 18px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+.button:hover{
+  background-color: #08ee83;
+  color: #031e11;
+}
+
+#stats {
+  font-size: 18px;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f0f8ff;
+  border-radius: 5px;
+}

@@ -88,11 +88,18 @@ function findUserByEmail($email) {
 
 function emailExists($email, $excludeId = null) {
     $conn = db_connect();
+
     if ($excludeId) {
         $stmt = $conn->prepare("SELECT id FROM user WHERE email = ? AND id != ?");
+        if (!$stmt) {
+            die("Erro prepare com excludeId: " . $conn->error);
+        }
         $stmt->bind_param("si", $email, $excludeId);
     } else {
         $stmt = $conn->prepare("SELECT id FROM user WHERE email = ?");
+        if (!$stmt) {
+            die("Erro prepare sem excludeId: " . $conn->error);
+        }
         $stmt->bind_param("s", $email);
     }
 

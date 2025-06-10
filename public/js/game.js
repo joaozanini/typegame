@@ -5,9 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let startTime = null;
     let errorCount = 0;
     let characters = [];
-    let errorHistory = [];
 
-    // Carrega as palavras do JSON
+    // Carrega as palavras do JSONa
     fetch('words.json')
         .then(response => {
             if (!response.ok) throw new Error('Erro ao carregar words.json');
@@ -15,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(words => {
             if (!Array.isArray(words)) throw new Error('Formato inválido do words.json');
-            
+
             const randomizedWords = shuffleArray(words);
             const textToType = randomizedWords.join(' ');
             characters = textToType.split('').map((char, index) => ({
@@ -51,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(span);
             charObj.element = span;
         });
-        
+
         if (chars.length > 0) {
             chars[0].element.classList.add('current');
         }
@@ -66,13 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (e.key.length > 1 && e.key !== ' ') return;
-            
+
             if (startTime === null) {
                 startTime = new Date();
             }
 
             const currentChar = characters[currentIndex];
-            
+
             if (e.key === currentChar.char) {
                 currentChar.status = 'correct';
                 currentChar.element.classList.add('correct');
@@ -110,12 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentIndex--;
         const prevChar = characters[currentIndex];
-        
+
         // Se estava incorreto, diminui o contador de erros
         if (prevChar.status === 'incorrect') {
             errorCount--;
         }
-        
+
         // Reseta o caractere anterior
         prevChar.status = 'pending';
         prevChar.element.classList.remove('correct', 'incorrect');
