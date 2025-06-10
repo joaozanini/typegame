@@ -47,6 +47,11 @@ body {
   z-index: 998; 
 }
 
+::selection{
+  background: #08ee83;
+  color: #031e11;
+}
+
 h1{
     text-align: center;
 }
@@ -119,11 +124,6 @@ input:-webkit-autofill {
   -webkit-text-fill-color: #08ee83; 
   caret-color: #08ee83; 
   transition: background-color 9999s ease-in-out 0s; 
-}
-
-::selection{
-  background: #08ee83;
-  color: #031e11;
 }
 
 input::selection, h1::selection, label::selection, li::selection{
