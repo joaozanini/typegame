@@ -24,6 +24,6 @@
 4. Acesse `http://localhost/typegame/public/register.php`
 
 ## Autores
-- João Vitor Zanini Pedro (Arquitetura & Back-end)
-- Lucas Giuraud (Arquitetura & Banco de Dados)
-- Guilherme Gemniczak da Rocha (Design & Frontend)
+- João Vitor Zanini Pedro (Arquitetura | Back-end | Banco de Dados)
+- Lucas Giuraud (Arquitetura | Banco de Dados )
+- Guilherme Gemniczak da Rocha (Design | Frontend)

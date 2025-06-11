@@ -128,3 +128,15 @@ function usernameExists($username, $excludeId = null) {
     $conn->close();
     return $exists;
 }
+
+function findPublicUserByUsername($user) {
+    $conn = db_connect();
+    $stmt = $conn->prepare("SELECT username, nickname FROM user WHERE username = ?");
+    $stmt->bind_param("s", $user);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+    $stmt->close();
+    $conn->close();
+    return $user;
+}
