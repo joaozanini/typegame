@@ -27,7 +27,7 @@
             </div>
 
             <div>
-                <input type="button" class="botao" value="Back">
+                <input type="button" class="botao" value="Back" onclick="window.history.back()">
                 <button type="submit" class="botao" id="submit">Play!</button>
             </div>
         </div>
