@@ -1,7 +1,9 @@
 <?php
+session_start();
 
-// caso o usuário já esteja logado, redireciona para a página inicial
-
+if (isset($_SESSION['user_id'])) {
+    header("Location: /typegame/public/game.php");
+}
 ?>
 
 
@@ -10,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Register - Typos!</title>
     <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
@@ -20,13 +22,13 @@
 
           <div class="form-group">
             <label for="username">Username:</label>
-            <input name="username" type="text" id="username" class="form-content" spellcheck="false" required> 
+            <input name="username" type="text" id="username" class="form-content" spellcheck="false" required>
             <li class="erro"></li>
           </div>
 
           <div class="form-group">
             <label for="nickname">Nickname:</label>
-            <input name="nickname" type="text" id="nickname" class="form-content" spellcheck="false" required> 
+            <input name="nickname" type="text" id="nickname" class="form-content" spellcheck="false" required>
             <li class="erro"></li>
           </div>
 

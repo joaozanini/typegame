@@ -1,9 +1,17 @@
+<?php
+session_start();
+
+if (isset($_SESSION['user_id'])) {
+    header("Location: /typegame/public/game.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nome do jogo</title>
+    <title>Typos!</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
