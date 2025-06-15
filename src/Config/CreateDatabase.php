@@ -49,3 +49,13 @@ foreach ($tables as $table => $sql) {
         die("Erro ao criar tabela '$table': " . $conn->error);
     }
 }
+
+$checkColumn = $conn->query("SHOW COLUMNS FROM league LIKE 'creator_id'");
+if ($checkColumn->num_rows === 0) {
+    $alterSql = "ALTER TABLE league 
+        ADD COLUMN creator_id INT NOT NULL,
+        ADD FOREIGN KEY (creator_id) REFERENCES user(id)";
+    if (!$conn->query($alterSql)) {
+        die("Erro ao alterar tabela 'league': " . $conn->error);
+    }
+}
