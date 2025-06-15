@@ -20,27 +20,26 @@ $tables = [
 
     "league" => "CREATE TABLE IF NOT EXISTS league (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(100) NOT NULL
+        name VARCHAR(20) NOT NULL
     )",
 
     "user" => "CREATE TABLE IF NOT EXISTS user (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        username VARCHAR(100) NOT NULL UNIQUE,
-        nickname VARCHAR(100),
+        username VARCHAR(20) NOT NULL UNIQUE,
+        nickname VARCHAR(20) NOT NULL,
         email VARCHAR(100) NOT NULL UNIQUE,
         password_hash VARCHAR(255) NOT NULL,
+        creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         total_points INT DEFAULT 0,
-        league_id INT,
+        league_id INT DEFAULT NULL,
         FOREIGN KEY (league_id) REFERENCES league(id)
     )",
 
     "historico" => "CREATE TABLE IF NOT EXISTS historico (
-        id INT AUTO_INCREMENT PRIMARY KEY,
         user_id INT NOT NULL,
-        correct_percent FLOAT NOT NULL,
-        error_percent FLOAT NOT NULL,
-        points INT DEFAULT 0,
-        criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        correct_percent FLOAT,
+        error_percent FLOAT,
+        points INT,
         FOREIGN KEY (user_id) REFERENCES user(id)
     )"
 ];
