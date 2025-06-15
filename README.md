@@ -21,7 +21,8 @@
 1. Instale o Xampp
 2. Clone o projeto em `./Xampp/htdocs`
 3. Abra o Xampp e inicie o Apache
-4. Acesse `http://localhost/typegame/public/register.php`
+4. Acesse `http://localhost/typegame/src/Config/CreateDatabase.php`
+5. Acesse `http://localhost/typegame/public/index.php`
 
 ## Autores
 - João Vitor Zanini Pedro (Arquitetura | Back-end | Banco de Dados)
