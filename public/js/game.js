@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let errorCount = 0;
     let characters = [];
     let timerId = null;
-    let titleTimerId = null; // Adiciona uma nova variável para o ID do timer do título
-    const maxTime = 10 * 1000; // 10 segundos (para testes, você tinha 60 segundos antes)
+    let titleTimerId = null; 
+    const maxTime = 60 * 1000;
     let handleKeyDown;
 
     // Carrega as palavras do JSON
