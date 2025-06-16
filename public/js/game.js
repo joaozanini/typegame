@@ -5,8 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let startTime = null;
     let errorCount = 0;
     let characters = [];
+    let timerId = null;
+    let titleTimerId = null; // Adiciona uma nova variável para o ID do timer do título
+    const maxTime = 10 * 1000; // 10 segundos (para testes, você tinha 60 segundos antes)
+    let handleKeyDown;
 
-    // Carrega as palavras do JSONa
+    // Carrega as palavras do JSON
     fetch('js/words.json')
         .then(response => {
             if (!response.ok) throw new Error('Erro ao carregar words.json');
@@ -20,12 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
             characters = textToType.split('').map((char, index) => ({
                 char,
                 element: null,
-                status: 'pending', // 'pending', 'correct', 'incorrect'
+                status: 'pending',
                 position: index
             }));
 
             displayCharacters(characters, textDisplay);
             setupKeyboardListener();
+            startTitleUpdater(); // Inicia o atualizador de título
         })
         .catch(error => {
             console.error('Erro:', error);
@@ -57,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setupKeyboardListener() {
-        const handleKeyDown = (e) => {
+        handleKeyDown = (e) => {
             if (e.key === 'Backspace') {
                 handleBackspace();
                 e.preventDefault();
@@ -66,11 +71,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (e.key.length > 1 && e.key !== ' ') return;
 
-            if (startTime === null) {
+            if (!startTime) {
+                console.log('[DEBUG] Timer iniciado');
                 startTime = new Date();
+                startTimer();
             }
 
             const currentChar = characters[currentIndex];
+            if (!currentChar) {
+                // Se não há mais caracteres para digitar, o jogo já deveria ter terminado
+                e.preventDefault();
+                return;
+            }
 
             if (e.key === currentChar.char) {
                 currentChar.status = 'correct';
@@ -103,38 +115,98 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentIndex === 0) return;
 
         const currentChar = characters[currentIndex];
-        if (currentChar) {
+        if (currentChar) { // Remove a classe 'current' do caracter atual antes de voltar
             currentChar.element.classList.remove('current');
         }
 
         currentIndex--;
         const prevChar = characters[currentIndex];
 
-        // Se estava incorreto, diminui o contador de erros
         if (prevChar.status === 'incorrect') {
             errorCount--;
         }
 
-        // Reseta o caractere anterior
         prevChar.status = 'pending';
         prevChar.element.classList.remove('correct', 'incorrect');
         prevChar.element.classList.add('current');
     }
 
+    function startTimer() {
+        timerId = setTimeout(() => {
+            console.log('[TIMER] Tempo esgotado');
+            finishGame();
+            document.removeEventListener('keydown', handleKeyDown);
+        }, maxTime);
+    }
+
     function finishGame() {
+        if (timerId) {
+            clearTimeout(timerId);
+            timerId = null;
+        }
+        if (titleTimerId) { // Limpa o setInterval do título
+            clearInterval(titleTimerId);
+            titleTimerId = null;
+            document.title = 'Jogo de Digitação'; // Resetar o título
+        }
+
+
         const endTime = new Date();
-        const totalTime = (endTime - startTime) / 1000;
+        const totalTime = startTime ? (endTime - startTime) / 1000 : 0;
         const totalChars = characters.length;
-        const wpm = Math.round((totalChars / 5) / (totalTime / 60));
-        const accuracy = Math.round(((totalChars - errorCount) / totalChars) * 100);
+        const charsTyped = currentIndex;
+        // WPM (Words Per Minute) = (Caracteres Digitados / 5) / (Tempo Total em Minutos)
+        const wpm = totalTime > 0 ? Math.round((charsTyped / 5) / (totalTime / 60)) : 0;
+        // Precisão = ((Caracteres Digitados - Erros) / Caracteres Digitados) * 100
+        const accuracy = charsTyped > 0 ? Math.round(((charsTyped - errorCount) / charsTyped) * 100) : 0;
 
         statsContainer.innerHTML = `
-            <h3>Result</h3>
-            <p>Time: ${totalTime.toFixed(1)} segundos</p>
-            <p>Speed: ${wpm} WPM</p>
-            <p>Precision: ${accuracy}%</p>
-            <p>Errors: ${errorCount}</p>
-            <button onclick="location.reload()">↻ Play Again</button>
+            <h3>Resultado</h3>
+            <p>Tempo: ${totalTime.toFixed(1)} segundos</p>
+            <p>Velocidade: ${wpm} WPM</p>
+            <p>Precisão: ${accuracy}%</p>
+            <p>Erros: ${errorCount}</p>
+            <button onclick="location.reload()">↻ Jogar Novamente</button>
         `;
+
+        postResult({ time: totalTime, wpm, accuracy, errors: errorCount });
+    }
+
+    function postResult(data) {
+        fetch('', { // O endpoint vazio aqui pode ser um problema. Certifique-se de que é o endpoint correto.
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Erro no envio do resultado');
+            return response.json();
+        })
+        .then(result => {
+            console.log('Resultado enviado com sucesso:', result);
+        })
+        .catch(err => {
+            console.error('Erro ao enviar resultado:', err);
+        });
+    }
+
+    function updateTitle() {
+        if (startTime) {
+            const elapsed = new Date() - startTime;
+            const remainingTime = Math.max(0, maxTime - elapsed);
+            if (remainingTime <= 0 && timerId) { // Se o tempo restante é 0 ou menos, e o timer principal ainda não limpou
+                 // Isso é um fallback, mas o finishGame() já deveria ter sido chamado pelo timeout principal.
+                 // Garante que o título seja atualizado para 0 e o jogo encerre, caso haja algum descompasso.
+                document.title = 'Tempo restante: 0.0s';
+            } else {
+                document.title = `Tempo restante: ${(remainingTime / 1000).toFixed(1)}s`;
+            }
+        } else {
+            document.title = 'Jogo de Digitação';
+        }
+    }
+
+    function startTitleUpdater() {
+        titleTimerId = setInterval(updateTitle, 1000);
     }
 });
