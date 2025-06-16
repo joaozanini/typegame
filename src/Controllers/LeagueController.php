@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../repositories/leagueRepository.php'; // funções de acesso ao banco para league
+require_once __DIR__ . '/../models/League.php';
 header('Content-Type: application/json');
 
 switch ($_SERVER["REQUEST_METHOD"]) {

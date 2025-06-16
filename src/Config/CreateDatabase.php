@@ -37,8 +37,10 @@ $tables = [
 
     "historico" => "CREATE TABLE IF NOT EXISTS historico (
         user_id INT NOT NULL,
-        correct_percent FLOAT,
-        error_percent FLOAT,
+        total_time INT NOT NULL,
+        wpm FLOAT NOT NULL,
+        accuracy FLOAT NOT NULL,
+        error_count INT NOT NULL,
         points INT,
         FOREIGN KEY (user_id) REFERENCES user(id)
     )"
