@@ -140,6 +140,16 @@ function findPublicUserByUsername($user) {
     return $user;
 }
 
+function addPoints($userId, $points) {
+    $conn = db_connect();
+    $stmt = $conn->prepare("UPDATE user SET total_points = total_points + ? WHERE id = ?");
+    $stmt->bind_param("ii", $points, $userId);
+    $success = $stmt->execute();
+    $stmt->close();
+    $conn->close();
+    return $success;
+}
+
 function joinLeague($leagueId, $userId) {
     $conn = db_connect();
     $stmt = $conn->prepare("INSERT INTO user (league_id) VALUES (?) WHERE id = ?");

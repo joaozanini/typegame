@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function postResult(data) {
-        fetch('', { // O endpoint vazio aqui pode ser um problema. Certifique-se de que é o endpoint correto.
+        fetch('../src/Controllers/GameController.php', { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)

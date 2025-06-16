@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../models/GameResult.php';
+require_once __DIR__ . '/../models/User.php';
 session_start();
 
 header('Content-Type: application/json');
@@ -60,11 +61,12 @@ function handlePostRequest() {
 
     $userId = $_SESSION['user_id'];
 
-    $success = createGameResult($userId, $totalTime, $wpm, $accuracy, $errorCount, $points);
+    $gamesuccess = createGameResult($userId, $totalTime, $wpm, $accuracy, $errorCount, $points);
+    $pointsSuccess = addPoints($userId, $points);
 
-    if ($success) {
+    if ($gamesuccess && $pointsSuccess) {
         http_response_code(201);
-        echo json_encode(["message" => "Resultado de jogo criado com sucesso."]);
+        echo json_encode(["message" => "Resultado de jogo criado com sucesso. Pontuação: $points adicionada ao usuário."]);
     } else {
         http_response_code(500);
         echo json_encode(["error" => "Erro ao criar resultado de jogo."]);
