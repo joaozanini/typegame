@@ -1,1 +1,0 @@
-// lógica global do projeto

@@ -1,11 +1,19 @@
-@import url(https://fonts.googleapis.com/css?family=VT323);
+:root{
+  font-size: 62.5%;
+  --cor-font: 152;
+  --fonte-geral: hsl(var(--cor-font), 93%, 48%);
+  --cor-sec: 151;
+  --fonte-sec: 	hsl(var(--cor-sec), 82%, 6%);
+}
+
+
 
 body {
   margin: 0;
-  background-color: #031e11;
-  color: #08ee83;
+  background-color: var(--fonte-sec);
+  color: var(--fonte-geral);
   font-family: 'VT323';
-  font-size: 20px;
+  font-size: 2.0rem;
   text-shadow: 0 0 4px #034b23;
 }
 
@@ -45,7 +53,7 @@ body {
   top: -10px;
   left: 0;
   pointer-events: none;
-  z-index: 998; 
+  z-index: 1; 
 }
 
 body, html {
@@ -63,21 +71,19 @@ body, html {
 
 .main{
   width: 90vw;
-  max-width: 700px;
+  max-width: 70rem;
   padding: 2vh 2vw;
-  border: 5px solid #08ee83;
+  border: 5px solid var(--fonte-geral);
   box-sizing: border-box;
   
 }
 
 .botao {
   background-color: transparent;
-  border: 5px solid #08ee83;
-  color: #08ee83;
+  border: 5px solid var(--fonte-geral);
+  color: var(--fonte-geral);
   font-family: 'VT323';
-  width: 14vw;
-  height: 9vh;
-  font-size: 4vw;
+  font-size: 8rem;
   cursor: pointer;
   transition: 0.3s;
   display: inline-block;
@@ -86,18 +92,18 @@ body, html {
 }
 
 .botao:hover{ 
-  background-color: #08ee83;
-  color: #031e11;
+  background-color: var(--fonte-geral);
+  color: var(--fonte-sec);
 }
-
+*
 ::selection{
-  background: #08ee83;
-  color: #031e11;
+  background: var(--fonte-geral);
+  color: var(--fonte-sec);
 }
 
 a::selection, h1::selection, p::selection, li::selection{
-  background: #08ee83;
-  color: #031e11;
+  background: var(--fonte-geral);
+  color: var(--fonte-sec);
 }
 
 h1{
@@ -106,19 +112,23 @@ h1{
 }
 
 .titulo{
-  margin: 20px;
-  display: inline-block;
-  border: 5px solid #08ee83;
-  padding-left: 20px;
-  padding-right: 20px;
+  border: 5px solid var(--fonte-geral);
+  padding-inline: 2rem;
   display: flex;
   justify-content: center;
+  flex: 1;
+  margin-bottom: 2rem;
 }
 
 .botao-wrapper{
   display: flex;
   justify-content: center;
   gap: 1vw;
-  flex-wrap: wrap
+  flex-direction: row;
 }
+
+.botao-wrapper a{
+  flex: 1;
+}
+
 

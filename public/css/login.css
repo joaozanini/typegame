@@ -1,10 +1,16 @@
-@import url(https://fonts.googleapis.com/css?family=VT323);
+:root{
+  font-size: 62.5%;
+  --cor-font: 152;
+  --fonte-geral: hsl(var(--cor-font), 93%, 48%);
+  --cor-sec: 151;
+  --fonte-sec: 	hsl(var(--cor-sec), 82%, 6%);
+}
 
 body {
-  background-color: #031e11;
-  color: #08ee83;
+  background-color: var(--fonte-sec);
+  color: var(--fonte-geral);
   font-family: 'VT323';
-  font-size: 20px;
+  font-size: 2rem;
   text-shadow: 0 0 4px #034b23;
 }
 
@@ -60,8 +66,8 @@ form {
 }
 
 .form-wrapper {
-  padding: 30px;
-  border: 2px solid #08ee83;
+  padding: 3rem;
+  border: 2px solid var(--fonte-geral);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,65 +90,65 @@ form {
 
 .erro {
   list-style-type: none;
-  color: #08ee83;
-  font-size: 20px;
+  color: var(--fonte-geral);
+  font-size: 2rem;
 }
 
 input{
   background-color: #087741c7;
   border: none;
   font-family: 'VT323';
-  color: #08ee83;
-  font-size: 20px;
+  color: var(--fonte-geral);
+  font-size: 2rem;
 }
 
 .botao {
   background-color: transparent;
-  border: 2px solid #08ee83;
-  color: #08ee83;
+  border: 2px solid var(--fonte-geral);
+  color: var(--fonte-geral);
   font-family: 'VT323';
-  font-size: 18px;
-  width: 100px;
-  height: 30px;
+  font-size: 1.8rem;
+  width: 10rem;
+  height: 3rem;
   cursor: pointer;
   transition: 0.3s;
   display: inline-block;
 }
 
 .botao:hover{ 
-  background-color: #08ee83;
-  color: #031e11;
+  background-color: var(--fonte-geral);
+  color: var(--fonte-sec);
 }
 
 
 
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px #087741c7 inset;
-  -webkit-text-fill-color: #08ee83; 
-  caret-color: #08ee83; 
+  -webkit-text-fill-color: var(--fonte-geral); 
+  caret-color: var(--fonte-geral); 
   transition: background-color 9999s ease-in-out 0s; 
 }
 
 ::selection{
-  background: #08ee83;
-  color: #031e11;
+  background: var(--fonte-geral);
+  color: var(--fonte-sec);
 }
 
 input::selection, h1::selection, label::selection, li::selection{
-  background: #08ee83;
-  color: #031e11;
+  background: var(--fonte-geral);
+  color: var(--fonte-sec);
 }
 
 input:focus{
-  border: #08ee83;
+  border: var(--fonte-geral);
   outline: none;
 }
 
 .eye{
   background-color: #087741c7;
-  color: #08ee83;
+  color: var(--fonte-geral);
   font-family: 'VT323';
-  font-size: 18px;
+  font-size: 1.8rem;
   height: 28.1px;
   cursor: pointer;
   transition: 0.3s;
@@ -151,8 +157,8 @@ input:focus{
 }
 
 .eye:hover{
-  background-color: #08ee83;
-  color: #031e11;
+  background-color: var(--fonte-geral);
+  color: var(--fonte-sec);
 }
 
 .password-wrapper{
@@ -177,5 +183,5 @@ input:focus{
 
 a{
     font-family: 'VT323';
-    color: #08ee83;
+    color: var(--fonte-geral);
 }
