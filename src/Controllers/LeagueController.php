@@ -57,16 +57,25 @@ function handlePostRequest() {
 
     $creatorId = $_SESSION['user_id'];
 
-    $success = createLeague($name, $creatorId);
+    $leaguesuccess = createLeague($name, $creatorId);
+    
+    if (!$leaguesuccess) {
+        http_response_code(500);
+        echo json_encode(["error" => "Erro ao criar a liga."]);
+        return;
+    }
 
-    if ($success) {
+    $usersucess = joinLeague($creatorId, $leaguesuccess);
+
+    if ($usersucess) {
         http_response_code(201);
         echo json_encode(["message" => "Liga criada com sucesso."]);
     } else {
         http_response_code(500);
-        echo json_encode(["error" => "Erro ao criar a liga."]);
+        echo json_encode(["error" => "Erro ao adicionar criador à liga."]);
     }
 }
+
 
 function handlePutRequest() {
     session_start();

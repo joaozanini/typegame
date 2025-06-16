@@ -139,3 +139,13 @@ function findPublicUserByUsername($user) {
     $conn->close();
     return $user;
 }
+
+function joinLeague($leagueId, $userId) {
+    $conn = db_connect();
+    $stmt = $conn->prepare("INSERT INTO user (league_id) VALUES (?) WHERE id = ?");
+    $stmt->bind_param("ii", $leagueId, $userId);
+    $success = $stmt->execute();
+    $stmt->close();
+    $conn->close();
+    return $success;
+}
