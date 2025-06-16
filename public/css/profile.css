@@ -1,4 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=VT323);
+:root{
+  font-size: 62.5%;
+  --cor-font: 152;
+  --fonte-geral: hsl(var(--cor-font), 93%, 48%);
+  --cor-sec: 151;
+  --fonte-sec: 	hsl(var(--cor-sec), 82%, 6%);
+}
 
 body {
   background-color: #031e11;
