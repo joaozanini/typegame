@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const textDisplay = document.getElementById('text-display');
     const statsContainer = document.getElementById('stats');
+    const timerDisplay = document.getElementById('timer')
     let currentIndex = 0;
     let startTime = null;
     let errorCount = 0;
@@ -75,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('[DEBUG] Timer iniciado');
                 startTime = new Date();
                 startTimer();
+
             }
 
             const currentChar = characters[currentIndex];
@@ -103,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 finishGame();
                 document.removeEventListener('keydown', handleKeyDown);
+                if (timerDisplay) timerDisplay.innerText = '';
             }
 
             e.preventDefault();
@@ -168,6 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <p>Erros: ${errorCount}</p>
             <button onclick="location.reload()">↻ Jogar Novamente</button>
         `;
+        statsContainer.style.border = "5px solid #08ee83"
 
         postResult({ time: totalTime, wpm, accuracy, errors: errorCount });
     }
@@ -194,19 +198,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (startTime) {
             const elapsed = new Date() - startTime;
             const remainingTime = Math.max(0, maxTime - elapsed);
-            if (remainingTime <= 0 && timerId) { // Se o tempo restante é 0 ou menos, e o timer principal ainda não limpou
-                 // Isso é um fallback, mas o finishGame() já deveria ter sido chamado pelo timeout principal.
-                 // Garante que o título seja atualizado para 0 e o jogo encerre, caso haja algum descompasso.
-                document.title = 'Tempo restante: 0.0s';
-            } else {
-                document.title = `Tempo restante: ${(remainingTime / 1000).toFixed(1)}s`;
+            const timeText = `${(remainingTime / 1000).toFixed(1)}s`;
+
+            document.title = `Tempo restante: ${timeText}`;
+            if (timerDisplay) {
+                timerDisplay.innerText = `⏱ ${timeText}`;
+            }
+
+            if (timeText === `0.1s`) {
+                timerDisplay.innerText = '⏱ 0.0s';
             }
         } else {
             document.title = 'Jogo de Digitação';
+            if (timerDisplay) timerDisplay.innerText = '';
         }
+        
     }
 
+
     function startTitleUpdater() {
-        titleTimerId = setInterval(updateTitle, 1000);
+        titleTimerId = setInterval(updateTitle, 100);
     }
 });
