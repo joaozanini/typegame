@@ -7,7 +7,7 @@ function db_connect() {
   $port = $applicationproperties['db.port'];
   $dbname = $applicationproperties['db.name'];
   $user = $applicationproperties['db.user'];
-  $password = $applicationproperties['db.password'];
+  $password = '';
 
   $conn = new mysqli($host, $user, $password, $dbname, $port);
 
@@ -24,7 +24,7 @@ function mysql_connect() {
   $host = $applicationproperties['db.host'];
   $port = $applicationproperties['db.port'];
   $user = $applicationproperties['db.user'];
-  $password = $applicationproperties['db.password'];
+  $password = '';
   
   $conn = new mysqli($host, $user, $password, '', $port);
   
