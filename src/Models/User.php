@@ -139,3 +139,37 @@ function findPublicUserByUsername($user) {
     $conn->close();
     return $user;
 }
+
+// GAME UTILS
+
+function addPoints($userId, $points) {
+    $conn = db_connect();
+    $stmt = $conn->prepare("UPDATE user SET total_points = total_points + ? WHERE id = ?");
+    $stmt->bind_param("ii", $points, $userId);
+    $success = $stmt->execute();
+    $stmt->close();
+    $conn->close();
+    return $success;
+}
+
+// LEAGUE UTILS
+
+function joinLeague($leagueId, $userId) {
+    $conn = db_connect();
+    $stmt = $conn->prepare("INSERT INTO user (league_id) VALUES (?) WHERE id = ?");
+    $stmt->bind_param("ii", $leagueId, $userId);
+    $success = $stmt->execute();
+    $stmt->close();
+    $conn->close();
+    return $success;
+}
+
+function leaveLeague($userId) {
+    $conn = db_connect();
+    $stmt = $conn->prepare("UPDATE user SET league_id = NULL WHERE id = ?");
+    $stmt->bind_param("i", $userId);
+    $success = $stmt->execute();
+    $stmt->close();
+    $conn->close();
+    return $success;
+}
