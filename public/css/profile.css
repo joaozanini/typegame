@@ -11,7 +11,7 @@ body {
   color: var(--fonte-geral);
   font-family: 'VT323';
   font-size: 20px;
-  text-shadow: 0 0 4px #034b23;
+
 }
 
 .crt-overlay {
@@ -73,6 +73,18 @@ body {
 
 }
 
+#userData{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* ou center se quiser centralizar */
+    gap: -2rem;
+}
+
+#userData h2{
+    margin: 0px;
+}
+
+
 img{
   margin: 2rem;
   width: 15rem;
@@ -83,6 +95,7 @@ img{
 
 #username{
   font-size: 5rem;
+  margin: 0.8rem;
 }
 
 .buttonWrapper{
@@ -121,28 +134,31 @@ h2{
   margin: 2rem;
 }
 
-
-.historyUnit{
-  margin: 2rem;
-  border: 5px solid var(--fonte-geral);
+#historyConteiner {
   padding: 2rem;
 }
 
-.historyUnit p{
-  margin-top: 0px;
+
+.historyTable {
+  width: 100%;
+  border-collapse: collapse;
+  padding: 2rem;
+  font-size: 2.2rem;
+  border: 5px solid var(--fonte-geral);
 }
 
-.matchHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+.historyTable th,
+.historyTable td {
+  border: 2px solid var(--fonte-geral);
+  padding: 1rem;
+  text-align: center;
 }
 
-.matchHeader h3 {
-  margin: 0;
+.historyTable th {
+  background-color: var(--fonte-geral);
+  color: var(--fonte-sec);
 }
 
-.historyUnit h4{
-  margin-bottom: 2rem;
+.historyTable tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
 }
