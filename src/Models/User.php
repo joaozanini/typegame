@@ -140,6 +140,18 @@ function findPublicUserByUsername($user) {
     return $user;
 }
 
+function getTotalPoints($userId) {
+    $conn = db_connect();
+    $stmt = $conn->prepare("SELECT total_points FROM user WHERE id = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $points = $result->fetch_assoc()['total_points'];
+    $stmt->close();
+    $conn->close();
+    return $points;
+}
+
 // GAME UTILS
 
 function addPoints($userId, $points) {

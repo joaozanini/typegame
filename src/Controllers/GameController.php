@@ -28,7 +28,7 @@ function handleGetRequest() {
     }
 
     $userId = $_SESSION['user_id'];
-    $gameResult = findGameResultByUserId($userId);
+    $gameResult = findAllGameResultsByUserId($userId);
 
     if ($gameResult) {
         echo json_encode($gameResult);

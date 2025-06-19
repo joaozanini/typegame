@@ -14,16 +14,16 @@ function createGameResult($userId, $totalTime, $wpm, $accuracy, $errorCount, $po
 
 // UTILS
 
-function findGameResultByUserId($userId) {
+function findAllGameResultsByUserId($userId) {
     $conn = db_connect();
     $stmt = $conn->prepare("SELECT * FROM historico WHERE user_id = ?");
     $stmt->bind_param("i", $userId);
     $stmt->execute();
     $result = $stmt->get_result();
-    $gameResult = $result->fetch_assoc();
+    $gameResults = $result->fetch_all(MYSQLI_ASSOC);
     $stmt->close();
     $conn->close();
-    return $gameResult;
+    return $gameResults;
 }
 
 function findAllGameResults() {

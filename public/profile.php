@@ -22,10 +22,17 @@ if (!isset($_SESSION['user_id'])) {
             <img src="img/placeholder.png" alt="">
             <div id="userData">
                 <h1 id="username">PLACEHOLDER</h1>
-                <h2>Total score: 111111111111111</h2>
+                <h2>Total score: 
+                    <?php 
+                    require_once '../src/Models/User.php';
+                    $id = $_SESSION['user_id'];
+                    $pontos = getTotalPoints($id);
+                    echo $pontos;
+                    ?>
+                </h2>
             </div>
             <div class="buttonWrapper">
-                <input type="button" class="botao" value="Logout">
+                <input type="button" class="botao" value="Logout" onclick="confirmLogout()">
                 <input type="button" class="botao" value="Edit">
             </div>
         </div>
@@ -39,7 +46,6 @@ if (!isset($_SESSION['user_id'])) {
                     <thead>
                         <tr>
                             <th>Match</th>
-                            <th>Date</th>
                             <th>WPM</th>
                             <th>Errors</th>
                             <th>Accuracy</th>
@@ -48,51 +54,29 @@ if (!isset($_SESSION['user_id'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>#1</td>
-                            <td>2025-3-3</td>
-                            <td>100</td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td>30s</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>#2</td>
-                            <td>2025-3-3</td>
-                            <td>100</td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td>30s</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>#3</td>
-                            <td>2025-3-3</td>
-                            <td>100</td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td>30s</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>#4</td>
-                            <td>2025-3-3</td>
-                            <td>100</td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td>30s</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>#5</td>
-                            <td>2025-3-3</td>
-                            <td>100</td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td>30s</td>
-                            <td>100</td>
-                        </tr>
+                        <?php
+                        require_once __DIR__ . '/../src/Models/GameResult.php';
+
+                        $userId = $_SESSION['user_id'];
+                        $gameResults = findAllGameResultsByUserId($userId);
+
+                        if (!empty($gameResults)) {
+                            $matchNumber = 1;
+                            foreach ($gameResults as $result) {
+                                echo "<tr>";
+                                echo "<td>#{$matchNumber}</td>";
+                                echo "<td>{$result['wpm']}</td>";
+                                echo "<td>{$result['error_count']}</td>";
+                                echo "<td>{$result['accuracy']}%</td>";
+                                echo "<td>{$result['total_time']}s</td>";
+                                echo "<td>{$result['points']}</td>";
+                                echo "</tr>";
+                                $matchNumber++;
+                            }
+                        } else {
+                            echo "<tr><td colspan='6'>No game history found.</td></tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
             </section>
@@ -103,6 +87,17 @@ if (!isset($_SESSION['user_id'])) {
 
     <div class="crt-overlay"></div>
     <div class="frame"></div>
+
+    <script>
+
+    function confirmLogout() {
+        const confirmacao = confirm("Tem certeza que deseja fazer logout?");
+        if (confirmacao) {
+            window.location.href = "logout.php";
+        }
+    }
+
+    </script>
 
 </body>
 </html>
