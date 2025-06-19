@@ -13,9 +13,20 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
+    <div id="mainav">
+        <div id="nav">
+            <h1>Typos!</h1>
+            <div class="buttonWrapper">
+                <input type="button" class="botao" value="Play!" onclick="window.location.href='game.php';">
+                <input type="button" class="botao" value="Leagues" onclick="window.location.href='league.php';">
+                <input type="button" class="botao" value="Profile" onclick="window.location.href='profile.php';">
+            </div>
+        </div>
+    </div>
 
     <div class="main">
         <div id="userInfo">
@@ -31,7 +42,7 @@ if (!isset($_SESSION['user_id'])) {
                     ?>
                 </h2>
             </div>
-            <div class="buttonWrapper">
+            <div class="buttonConteiner">
                 <input type="button" class="botao" value="Logout" onclick="confirmLogout()">
                 <input type="button" class="botao" value="Edit">
             </div>
