@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (titleTimerId) { // Limpa o setInterval do título
             clearInterval(titleTimerId);
             titleTimerId = null;
-            document.title = 'Jogo de Digitação'; // Resetar o título
+            document.title = 'Typos!'; // Resetar o título
         }
 
 
@@ -164,12 +164,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const accuracy = charsTyped > 0 ? Math.round(((charsTyped - errorCount) / charsTyped) * 100) : 0;
 
         statsContainer.innerHTML = `
-            <h3>Resultado</h3>
-            <p>Tempo: ${totalTime.toFixed(1)} segundos</p>
-            <p>Velocidade: ${wpm} WPM</p>
-            <p>Precisão: ${accuracy}%</p>
-            <p>Erros: ${errorCount}</p>
-            <button onclick="location.reload()">↻ Jogar Novamente</button>
+            <h3>Result</h3>
+            <p>Time: ${totalTime.toFixed(1)} seconds</p>
+            <p>Speed: ${wpm} WPM</p>
+            <p>Precision: ${accuracy}%</p>
+            <p>Errors: ${errorCount}</p>
+            <button onclick="location.reload()">↻ Play again</button>
         `;
         statsContainer.style.border = "5px solid #08ee83"
 
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const remainingTime = Math.max(0, maxTime - elapsed);
             const timeText = `${(remainingTime / 1000).toFixed(1)}s`;
 
-            document.title = `Tempo restante: ${timeText}`;
+            document.title = `Time left: ${timeText}`;
             if (timerDisplay) {
                 timerDisplay.innerText = `⏱ ${timeText}`;
             }
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 timerDisplay.innerText = '⏱ 0.0s';
             }
         } else {
-            document.title = 'Jogo de Digitação';
+            document.title = 'Typos!';
             if (timerDisplay) timerDisplay.innerText = '';
         }
         

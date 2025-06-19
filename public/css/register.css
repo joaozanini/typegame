@@ -54,7 +54,8 @@ body {
 }
 
 ::selection{
-  color: var(--fonte-geral);
+  color: var(--fonte-sec);
+  background-color: var(--fonte-geral);
 }
 
 h1{

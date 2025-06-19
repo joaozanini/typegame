@@ -95,7 +95,7 @@ body, html {
   background-color: var(--fonte-geral);
   color: var(--fonte-sec);
 }
-*
+
 ::selection{
   background: var(--fonte-geral);
   color: var(--fonte-sec);
