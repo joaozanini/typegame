@@ -26,14 +26,14 @@
   width: 100%;
 }
 
-h1{
+#title{
   margin: 0px;
     margin-left: 2rem;
   font-size: 8rem;
 }
 
 
-.botao {
+.botaon {
   min-width: 20rem;
   background-color: transparent;
   border: 5px solid var(--fonte-geral);
@@ -49,7 +49,7 @@ h1{
 
 }
 
-.botao:hover{ 
+.botaon:hover{ 
   background-color: var(--fonte-geral);
   color: var(--fonte-sec);
 }

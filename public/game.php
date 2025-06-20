@@ -19,11 +19,11 @@ if (!isset($_SESSION['user_id'])) {
 <body>
   <div id="mainav">
       <div id="nav">
-          <h1>Typos!</h1>
+          <h1 id="title">Typos!</h1>
           <div class="buttonWrapper">
-              <input type="button" id="opage" class="botao" value="Play!" onclick="window.location.href='game.php';">
-              <input type="button" class="botao" value="Leagues" onclick="window.location.href='league.php';">
-              <input type="button" class="botao" value="Profile" onclick="window.location.href='profile.php';">
+              <input type="button" id="opage" class="botaon" value="Play!" onclick="window.location.href='game.php';">
+              <input type="button" class="botaon" value="Leagues" onclick="window.location.href='league.php';">
+              <input type="button" class="botaon" value="Profile" onclick="window.location.href='profile.php';">
           </div>
       </div>
   </div>
