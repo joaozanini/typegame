@@ -69,20 +69,20 @@ body {
 #main{
   border: 5px solid var(--fonte-geral); 
   margin: 3rem;
-  min-height: calc(100vh - 7rem);
+  min-height: calc(100vh - 19rem);
+
 }
 
 #cabecalho{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+
 }
 
 h1{
-  margin: 0px;
-  margin-left: 2rem;
-  font-size: 8rem;
+
+  font-size: 8rem;  
 }
 
 
@@ -97,9 +97,6 @@ h1{
   transition: 0.3s;
   display: inline-block;
   text-decoration: none;
-  margin-right: 2rem;
-  margin-top: 2rem;
-
 }
 
 .botao:hover{ 
@@ -108,9 +105,111 @@ h1{
 
 }
 
-.divider{
-  border: none;
-  border-top: 5px solid var(--fonte-geral);
-  margin: 0px;
-  margin-top: 2rem;
+.botaonWrapper{
+  display: flex;
+margin-right: 2rem;
+gap: 2rem;
+}
+
+
+.custom-select {
+  position: relative;
+  font-size: 3rem;
+  min-width: 50rem;
+  user-select: none;
+}
+
+
+.select-selected {
+  border: 5px solid var(--fonte-geral);
+  background-color: transparent;
+  color: var(--fonte-geral);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-height: 5rem;
+  box-sizing: border-box;
+}
+
+
+
+.select-items {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--fonte-sec);
+  border: 5px solid var(--fonte-geral);
+  border-top: none;
+  z-index: 10;
+}
+
+.select-items div {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  color: var(--fonte-geral);
+  transition: background 0.2s, color 0.2s;
+}
+
+.select-items div:hover {
+  background-color: var(--fonte-geral);
+  color: var(--fonte-sec);
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-selected {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  margin-left: 2rem;
+  font-size: 3rem;
+  background-color: transparent;
+  color: var(--fonte-geral);
+}
+
+
+#historyConteiner {
+  padding: 2rem;
+}
+
+
+.historyTable {
+  width: 100%;
+  border-collapse: collapse;
+  padding: 2rem;
+  font-size: 2.2rem;
+  border: 5px solid var(--fonte-geral);
+}
+
+.historyTable th,
+.historyTable td {
+  border: 2px solid var(--fonte-geral);
+  padding: 1rem;
+  text-align: center;
+}
+
+.historyTable th {
+  background-color: var(--fonte-geral);
+  color: var(--fonte-sec);
+}
+
+.historyTable tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sort{
+  cursor: pointer;
+}
+
+.ordem{
+  color: var(--fonte-sec);
 }

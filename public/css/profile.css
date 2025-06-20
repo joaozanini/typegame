@@ -57,9 +57,8 @@ body {
 .main{
   border: 5px solid var(--fonte-geral);
   margin: 3rem;
-    min-height: calc(100vh - 16.5rem);
-    margin-top: 0px;
-  border-top-width: 0px;
+  min-height: calc(100vh - 19rem);
+
 }
 
 .divider{
@@ -85,6 +84,7 @@ body {
 
 #userData h2{
     margin: 0px;
+    font-size: 5rem;
 }
 
 
@@ -135,6 +135,7 @@ img{
 
 h2{
   margin: 2rem;
+  font-size: 4rem;
 }
 
 #historyConteiner {

@@ -44,7 +44,7 @@ h1{
   transition: 0.3s;
   display: inline-block;
   text-decoration: none;
-  margin: 1.5rem;
+  margin: 0rem;
 
 
 }
@@ -52,10 +52,19 @@ h1{
 .botao:hover{ 
   background-color: var(--fonte-geral);
   color: var(--fonte-sec);
+}
 
+.buttonWrapper{
+  margin-right: 2rem;
+  display: flex;
+  gap: 2rem;
 }
 
 #type{
     font-size: 6rem;
 }
 
+#opage{
+  background-color: var(--fonte-geral);
+  color: var(--fonte-sec);
+}
