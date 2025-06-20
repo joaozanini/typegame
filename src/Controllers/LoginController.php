@@ -26,13 +26,13 @@ $user = findUserByEmail($email);
 
 if (!$user) {
     http_response_code(401);
-    echo json_encode(["error" => "Usuário não encontrado."]);
+    header("Location: /typegame/public/loginInvalid.php");
     exit();
 }
 
 if (!password_verify($password, $user['password_hash'])) {
     http_response_code(401);
-    echo json_encode(["error" => "Senha incorreta."]);
+    header("Location: /typegame/public/loginInvalid.php");
     exit();
 }
 

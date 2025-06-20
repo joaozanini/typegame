@@ -110,6 +110,31 @@ function emailExists($email, $excludeId = null) {
     return $exists;
 }
 
+function usernameExistsById($username, $excludeId = null) {
+    $conn = db_connect();
+
+    if ($excludeId) {
+        $stmt = $conn->prepare("SELECT id FROM user WHERE username = ? AND id != ?");
+        if (!$stmt) {
+            die("Erro prepare com excludeId: " . $conn->error);
+        }
+        $stmt->bind_param("si", $email, $excludeId);
+    } else {
+        $stmt = $conn->prepare("SELECT id FROM user WHERE email = ?");
+        if (!$stmt) {
+            die("Erro prepare sem excludeId: " . $conn->error);
+        }
+        $stmt->bind_param("s", $username);
+    }
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $exists = $result->num_rows > 0;
+    $stmt->close();
+    $conn->close();
+    return $exists;
+}
+
 function usernameExists($username, $excludeId = null) {
     $conn = db_connect();
     if ($excludeId) {

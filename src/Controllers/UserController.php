@@ -58,29 +58,18 @@ function handlePostRequest() {
     $password1 = $_POST["password1"];
     $password2 = $_POST["password2"];
 
-    // Validações básicas
-    if (!$username || !$nickname || !$email || !$password1 || !$password2) {
-        http_response_code(400);
-        echo json_encode(["error" => "Todos os campos são obrigatórios."]);
-        return;
-    }
-
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        http_response_code(400);
-        echo json_encode(["error" => "Formato de e-mail inválido."]);
-        return;
+    // Validação dos dados
+    
+    if (usernameExists($username)) {
+        http_response_code(409);
+        header("Location: /typegame/public/registerInvalidUsername.php");
+        exit();
     }
 
     if (emailExists($email)) {
         http_response_code(409);
-        echo json_encode(["error" => "Este e-mail já está em uso."]);
-        return;
-    }
-
-    if ($password1 !== $password2) {
-        http_response_code(400);
-        echo json_encode(["error" => "As senhas não coincidem."]);
-        return;
+        header("Location: /typegame/public/registerInvalidEmail.php");
+        exit();
     }
 
     $hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
