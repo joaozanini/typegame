@@ -125,15 +125,17 @@ button:hover{
 
 #stats {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: 0 auto;
   align-items: center;
   text-align: center;
   font-size: 18px;
   margin-top: 20px;
-  padding: 5px;
-  max-width: 20rem;
-  padding-inline: 20px;
+  max-width: fit-content;
+}
+
+#stats *{
+  margin: 2rem;
 }
 
 ::selection{

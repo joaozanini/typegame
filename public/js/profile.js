@@ -67,3 +67,4 @@ function help() {
 
   document.addEventListener("keydown", escClose);
 }
+
