@@ -12,6 +12,7 @@ body {
   font-family: 'VT323';
   font-size: 2rem;
   text-shadow: 0 0 4px #034b23;
+  margin: 0px;
 }
 
 .crt-overlay {
@@ -67,7 +68,7 @@ form {
 
 .form-wrapper {
   padding: 3rem;
-  border: 2px solid var(--fonte-geral);
+  border: 5px solid var(--fonte-geral);
   display: flex;
   flex-direction: column;
   align-items: center;
