@@ -25,12 +25,21 @@ document.addEventListener("keydown", function (e) {
     e.preventDefault();
     const command = input.value.trim();
 
+
+    if (command.startsWith(":select ")) {
+      const name = command.slice(8).trim();
+      selectLeagueByName(name);
+      input.value = "";
+      return;
+    }
+
     if (commands[command]) {
-        input.placeholder = ""
-        commands[command]();
+      input.placeholder = "";
+      commands[command]();
+      commandBar.style.display = "none";
     } else {
-        input.value = "";
-        input.placeholder = "Unknown command"
+      input.value = "";
+      input.placeholder = "Unknown command";
     }
 
     input.value = "";

@@ -1,15 +1,28 @@
 const commands = {
-  ":sign up": signup,
-  ":sign in": signin,
+  ":game": game,
+  ":leagues": league,
+  ":logout": confirmLogout,
+  ":edit": edit,
   ":help": help,
 };
 
-function signup() {
-  window.location.href = "register.php"
+function confirmLogout() {
+    const confirmacao = confirm("Tem certeza que deseja fazer logout?");
+    if (confirmacao) {
+         window.location.href = "logout.php";
+    }
 }
 
-function signin() {
-  window.location.href = "login.php"
+function edit(){
+    window.location.href = "edit.php"
+}
+
+function game() {
+  window.location.href = "game.php"
+}
+
+function league() {
+  window.location.href = "league.php"
 }
 
 function help() {
@@ -24,8 +37,10 @@ function help() {
   commandsList.innerHTML = `
     <h2>Available Commands</h2>
     <ul>
-      <li><code>:sign up</code> — Sign up</li>
-      <li><code>:sign in</code> — Sign in</li>
+      <li><code>:game</code> — Goes to game page</li>
+      <li><code>:leagues</code> — Goes to leagues page</li>
+      <li><code>:logout</code> — Logout</li>
+      <li><code>:edit</code> — Goes to data editing page</li>
       <li><code>:help</code> — Show this help</li>
     </ul>
   `;

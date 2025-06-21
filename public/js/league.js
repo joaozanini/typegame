@@ -68,3 +68,131 @@ document.querySelectorAll("th.sort").forEach(header => {
     ascending = !ascending;
   });
 });
+
+const commands = {
+  ":game": game,
+  ":profile": profile,
+  ":create": create,
+  ":enter": enter,
+  ":open": openSelectMenu,
+  ":close":closeSelectMenu,
+  ":selectLeague": selectLeagueByName,
+  ":sortWeek": sortWeek,
+  ":sortTotal": sortTotal,
+  ":help": help,
+};
+
+
+function create(){
+    window.location.href = "leagueCreate.php"
+}
+
+function enter(){
+    window.location.href = "leagueEnter.php"
+}
+
+function game() {
+  window.location.href = "game.php"
+}
+
+function profile() {
+  window.location.href = "profile.php"
+}
+
+function openSelectMenu() {
+  options.classList.remove("select-hide");
+  selectBox.classList.add("active");
+}
+
+function closeSelectMenu() {
+  options.classList.add("select-hide");
+  selectBox.classList.remove("active");
+}
+
+function selectLeagueByName(name) {
+  const target = options.querySelector(`div[data-value="${name}"]`);
+  if (target) {
+    target.click();
+  } else {
+    const input = document.getElementById("commandText");
+    input.value = "";
+    input.placeholder = `League "${name}" not found`;
+  }
+}
+
+function sortWeek() {
+  const headers = document.querySelectorAll("th.sort");
+  for (const header of headers) {
+    if (header.textContent.toLowerCase().includes("weekly")) {
+      header.click();
+      return;
+    }
+  }
+
+  const input = document.getElementById("commandText");
+  input.value = "";
+  input.placeholder = `Weekly score column not found`;
+}
+
+function sortTotal() {
+  const headers = document.querySelectorAll("th.sort");
+  for (const header of headers) {
+    if (header.textContent.toLowerCase().includes("total")) {
+      header.click();
+      return;
+    }
+  }
+
+  const input = document.getElementById("commandText");
+  input.value = "";
+  input.placeholder = `Total score column not found`;
+}
+
+
+function help() {
+  if (document.getElementById("helpOverlay")) return;
+
+  const overlay = document.createElement("div");
+  overlay.id = "helpOverlay";
+  overlay.classList.add("help-overlay");
+
+  const commandsList = document.createElement("div");
+  commandsList.classList.add("help-commands");
+  commandsList.innerHTML = `
+    <h2>Available Commands</h2>
+    <ul>
+      <li><code>:game</code> — Goes to game page</li>
+      <li><code>:profile</code> — Goes to profile page</li>
+      <li><code>:create</code> — Create a new league</li>
+      <li><code>:enter</code> — Enter a league</li>
+      <li><code>:open</code> — Open the league selection menu</li>
+      <li><code>:close</code> — Close the league selection menu</li>
+      <li><code>:select &lt;name&gt;</code> — Select a league by name</li>
+      <li><code>:sortWeek</code> — Sort by weekly score</li>
+      <li><code>:sortTotal</code> — Sort by total score</li>     
+      <li><code>:help</code> — Show this help</li>
+    </ul>
+  `;
+
+  const closeBtn = document.createElement("button");
+  closeBtn.textContent = "Close [Esc]";
+  closeBtn.classList.add("help-close-btn");
+  closeBtn.addEventListener("click", () => {
+    document.body.removeChild(overlay);
+  });
+
+  overlay.appendChild(commandsList);
+  overlay.appendChild(closeBtn);
+  document.body.appendChild(overlay);
+
+  function escClose(e) {
+    if (e.key === "Escape") {
+      if (document.getElementById("helpOverlay")) {
+        document.body.removeChild(overlay);
+        document.removeEventListener("keydown", escClose);
+      }
+    }
+  }
+
+  document.addEventListener("keydown", escClose);
+}

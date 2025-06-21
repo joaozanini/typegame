@@ -15,6 +15,7 @@ if (!isset($_SESSION['user_id'])) {
     <title>Leagues!</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/commandBar.css">
     <link rel="stylesheet" href="css/league.css">
 </head>
 <body>
@@ -42,9 +43,10 @@ if (!isset($_SESSION['user_id'])) {
                 <span class="arrow">&#9662;</span>
             </div>
             <div class="select-items select-hide">
-                <div data-value="league1">1</div>
-                <div data-value="league2">2</div>
-                <div data-value="league3">3</div>
+                <div data-value="League 1">League 1</div>
+                <div data-value="League 2">League 2</div>
+                <div data-value="League 3">League 3</div> 
+                <!--O data-value precisa ser igual ao valor dentro da div-->
             </div>
             </div>
             <div class="botaonWrapper">
@@ -91,6 +93,8 @@ if (!isset($_SESSION['user_id'])) {
 
     <div class="crt-overlay"></div>
     <div class="frame"></div>
+
     <script src="js/league.js"></script>
+    <script src="js/commandBar.js"></script>
 </body>
 </html>

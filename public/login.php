@@ -51,8 +51,9 @@ if (isset($_SESSION['user_id'])) {
     <div class="crt-overlay"></div>
     <div class="frame"></div>
 
-    <script src="js/commandBar.js"></script>
+
     <script src="js/loginValidation.js"></script>
+    <script src="js/commandBar.js"></script>
 
 </body>
 </html>

@@ -75,9 +75,9 @@ function passwordf(){
 }
 
 function play() {
-  const form = document.getElementById("form");
+  const logForm = document.getElementById("form");
   if (validateForm()) {
-    form.submit();
+    logForm.requestSubmit();
   }
 }
 

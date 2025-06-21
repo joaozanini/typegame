@@ -148,7 +148,7 @@ function home() {
 }
 
 function userf(){
-  usernameinin.focus();
+  usernamein.focus();
 }
 
 function nickf(){
@@ -168,9 +168,9 @@ function confirmf(){
 }
 
 function submitc() {
-  const form = document.getElementById("form");
+  const logForm = document.getElementById("form");
   if (validateForm()) {
-    form.submit();
+    logForm.requestSubmit();
   }
 }
 

@@ -14,6 +14,7 @@ if (!isset($_SESSION['user_id'])) {
     <title>Profile</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/commandBar.css">
     <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
@@ -94,21 +95,11 @@ if (!isset($_SESSION['user_id'])) {
 
         </div>
     </div>
-    
-
     <div class="crt-overlay"></div>
     <div class="frame"></div>
 
-    <script>
 
-    function confirmLogout() {
-        const confirmacao = confirm("Tem certeza que deseja fazer logout?");
-        if (confirmacao) {
-            window.location.href = "logout.php";
-        }
-    }
-
-    </script>
-
+    <script src="js/profile.js"></script>
+    <script src="js/commandBar.js"></script>
 </body>
 </html>

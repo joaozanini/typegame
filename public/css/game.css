@@ -26,7 +26,7 @@ body {
   pointer-events: none;
   filter: blur(0.3px) brightness(1.1);
   background-image: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.171) 0px, rgba(0, 255, 0, 0.08) 2px, transparent 5px, transparent 3px);
-  z-index: 1;
+  z-index: 999;
   animation: flicker 10ms infinite;
 }
 

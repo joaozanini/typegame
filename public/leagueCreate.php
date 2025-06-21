@@ -15,6 +15,7 @@ if (!isset($_SESSION['user_id'])) {
     <title>Create a League </title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/commandBar.css">    
     <link rel="stylesheet" href="css/leagueCreate.css">
 </head>
 <body>
@@ -23,7 +24,7 @@ if (!isset($_SESSION['user_id'])) {
             <h1 id="title">Typos!</h1>
             <div class="buttonWrapper">
                 <input type="button" class="botaon" value="Play!" onclick="window.location.href='game.php';">
-                <input type="button" class="botaon" value="Leagues" onclick="window.location.href='league.php';">
+                <input type="button" id="opage" class="botaon" value="Leagues" onclick="window.location.href='league.php';">
                 <input type="button" class="botaon" value="Profile" onclick="window.location.href='profile.php';">
             </div>
         </div>
@@ -74,5 +75,6 @@ if (!isset($_SESSION['user_id'])) {
     <div class="frame"></div>
 
     <script src="js/leagueCreate.js"></script>
+    <script src="js/commandBar.js"></script>
 </body>
 </html>
