@@ -14,6 +14,7 @@ if (isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Typos!</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/commandBar.css">
     <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
@@ -67,5 +68,6 @@ if (isset($_SESSION['user_id'])) {
     <div class="frame"></div>
 
     <script src="js/registerValidation.js"></script>
+      <script src="js/commandBar.js"></script>
 </body>
 </html>

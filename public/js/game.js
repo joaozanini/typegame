@@ -64,6 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setupKeyboardListener() {
         handleKeyDown = (e) => {
+            if (document.getElementById("commandBar")?.style.display === "block") return;
+
             if (e.key === 'Backspace') {
                 handleBackspace();
                 e.preventDefault();
@@ -220,3 +222,66 @@ document.addEventListener('DOMContentLoaded', () => {
         titleTimerId = setInterval(updateTitle, 100);
     }
 });
+
+const commands = {
+  ":leagues": league,
+  ":profile": profile,
+   ":reset": reset,
+  ":help": help,
+};
+
+
+
+function profile() {
+  window.location.href = "profile.php"
+}
+
+function league() {
+  window.location.href = "league.php"
+}
+
+function reset(){
+    location.reload()
+}
+
+function help() {
+  if (document.getElementById("helpOverlay")) return;
+
+  const overlay = document.createElement("div");
+  overlay.id = "helpOverlay";
+  overlay.classList.add("help-overlay");
+
+  const commandsList = document.createElement("div");
+  commandsList.classList.add("help-commands");
+  commandsList.innerHTML = `
+    <h2>Available Commands</h2>
+    <ul>
+      <li><code>:leagues</code> — Goes to leagues page</li>
+      <li><code>:profile</code> — Goes to profile page</li>     
+      <li><code>:reset</code> — Resets the game</li>
+      <li><code>:help</code> — Show this help</li>
+    </ul>
+  `;
+
+  const closeBtn = document.createElement("button");
+  closeBtn.textContent = "Close [Esc]";
+  closeBtn.classList.add("help-close-btn");
+  closeBtn.addEventListener("click", () => {
+    document.body.removeChild(overlay);
+  });
+
+  overlay.appendChild(commandsList);
+  overlay.appendChild(closeBtn);
+  document.body.appendChild(overlay);
+
+  function escClose(e) {
+    if (e.key === "Escape") {
+      if (document.getElementById("helpOverlay")) {
+        document.body.removeChild(overlay);
+        document.removeEventListener("keydown", escClose);
+      }
+    }
+  }
+
+  document.addEventListener("keydown", escClose);
+}
