@@ -191,9 +191,9 @@ function addPoints($userId, $points) {
 
 // LEAGUE UTILS
 
-function joinLeague($leagueId, $userId) {
+function joinLeague($userId, $leagueId) {
     $conn = db_connect();
-    $stmt = $conn->prepare("INSERT INTO user (league_id) VALUES (?) WHERE id = ?");
+    $stmt = $conn->prepare("UPDATE user SET league_id = ? WHERE id = ?");
     $stmt->bind_param("ii", $leagueId, $userId);
     $success = $stmt->execute();
     $stmt->close();
@@ -210,3 +210,43 @@ function leaveLeague($userId) {
     $conn->close();
     return $success;
 }
+
+function findUsersByLeague($leagueId) {
+    $conn = db_connect();
+    $stmt = $conn->prepare("SELECT id, nickname, total_points FROM user WHERE league_id = ?");
+    $stmt->bind_param("i", $leagueId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $users = $result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+    $conn->close();
+    return $users;
+}
+
+function isUserInAnyLeague($userId) {
+    $conn = db_connect();
+    $stmt = $conn->prepare("SELECT league_id FROM user WHERE id = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $stmt->close();
+    $conn->close();
+
+    return !empty($row['league_id']);
+}
+
+function getLeagueIdByUserId($userId) {
+    $conn = db_connect();
+    $stmt = $conn->prepare("SELECT league_id FROM user WHERE id = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $stmt->close();
+    $conn->close();
+
+    return $row['league_id'] ?? null;
+}
+
+

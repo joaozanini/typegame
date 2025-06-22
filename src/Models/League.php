@@ -7,10 +7,12 @@ function createLeague($name, $creatorId) {
     $stmt = $conn->prepare("INSERT INTO league (name, creator_id) VALUES (?, ?)");
     $stmt->bind_param("si", $name, $creatorId);
     $success = $stmt->execute();
+    $insertedId = $stmt->insert_id;
     $stmt->close();
     $conn->close();
-    return $success;
+    return $success ? $insertedId : false; 
 }
+
 
 
 // DELETE
@@ -58,3 +60,24 @@ function findAllLeagues() {
     $conn->close();
     return $leagues;
 }
+
+function findLeaguesWithDetails() {
+    $conn = db_connect();
+    $query = "
+        SELECT 
+            l.id, 
+            l.name, 
+            COUNT(u.id) AS members, 
+            COALESCE(SUM(u.total_points), 0) AS total_score
+        FROM league l
+        LEFT JOIN user u ON l.id = u.league_id
+        GROUP BY l.id
+        ORDER BY l.id
+    ";
+    $result = $conn->query($query);
+    $leagues = $result->fetch_all(MYSQLI_ASSOC);
+    $conn->close();
+    return $leagues;
+}
+
+

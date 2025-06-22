@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/../models/League.php';
+require_once __DIR__ . '/../Models/League.php';
+require_once __DIR__ . '/../Models/User.php';
 header('Content-Type: application/json');
 
 switch ($_SERVER["REQUEST_METHOD"]) {
@@ -57,15 +58,15 @@ function handlePostRequest() {
 
     $creatorId = $_SESSION['user_id'];
 
-    $leaguesuccess = createLeague($name, $creatorId);
+    $leagueId = createLeague($name, $creatorId);
     
-    if (!$leaguesuccess) {
+    if (!$leagueId) {
         http_response_code(500);
         echo json_encode(["error" => "Erro ao criar a liga."]);
         return;
     }
 
-    $usersucess = joinLeague($creatorId, $leaguesuccess);
+    $usersucess = joinLeague($creatorId, $leagueId);
 
     if ($usersucess) {
         http_response_code(201);
