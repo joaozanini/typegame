@@ -1,28 +1,23 @@
 <?php
 session_start();
 
+require_once __DIR__ . '/../src/Models/League.php';
+require_once __DIR__ . '/../src/Models/User.php';
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: /typegame/public/index.php");
     exit();
 }
 
-require_once __DIR__ . '/../src/Models/League.php';
-require_once __DIR__ . '/../src/Models/User.php';
+$leagueId = isset($_GET['id']) ? (int)$_GET['id'] : null;
 
-if (!isset($_GET['league_id'])) {
-    $userId = $_SESSION['user_id'];
-    $leagueId = getLeagueIdByUserId($userId);
-
-    if ($leagueId) {
-        header("Location: leagueView.php?league_id=$leagueId");
-        exit();
-    } else {
-        echo "<p style='color: red; text-align: center;'>Você não está em nenhuma liga.</p>";
-        exit();
-    }
+if (!$leagueId) {
+    header("Location: /typegame/public/league.php");
+    exit();
 }
 
-$leagueId = (int)$_GET['league_id'];
+$userId = $_SESSION['user_id'];
+
 $league = findLeagueById($leagueId);
 $members = findUsersByLeague($leagueId);
 
@@ -31,12 +26,13 @@ if (!$league) {
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leagues!</title>
+    <title>Liga - <?= htmlspecialchars($league['name']) ?></title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/league.css">
@@ -47,25 +43,24 @@ if (!$league) {
             <h1 id="title">Typos!</h1>
             <div class="buttonWrapper">
                 <input type="button" class="botaon" value="Play!" onclick="window.location.href='game.php';">
-                <input type="button" id="opage" class="botaon" value="Leagues" onclick="window.location.href='league.php';">
+                <input type="button" class="botaon" value="Leagues" onclick="window.location.href='league.php';">
                 <input type="button" class="botaon" value="Profile" onclick="window.location.href='profile.php';">
             </div>
         </div>
     </div>
 
     <div id="main">
-    <div id="cabecalho">
-        <h1 style="margin-left: 2rem;"><?= htmlspecialchars($league['name']) ?></h1>
-        <h2 style="margin-right: 2rem;">| Total de Membros: <?= count($members) ?> |</h2>
+        <div id="cabecalho" style="display: flex; align-items: center; justify-content: space-between; padding: 2rem;">
+            <div>
+                <h1 style="margin: 0;"><?= htmlspecialchars($league['name']) ?></h1>
+                <p>ID da Liga: <?= $league['id'] ?> | Membros: <?= count($members) ?></p>
+            </div>
+            <form method="POST" action="../src/Controllers/LeagueLeave.php" style="margin-right: 2rem;">
+                <input type="hidden" name="league_id" value="<?= $league['id'] ?>">
+                <input type="submit" class="botao" value="Leave">
+            </form>
+        </div>
 
-        <form method="POST" action="../src/Controllers/LeagueLeave.php" style="display:inline; margin-right: 2rem;">
-            <input type="hidden" name="league_id" value="<?= $league['id'] ?>" style="width:1px">
-            <input type="submit" class="botao" value="Leave">
-        </form>
-
-    </div>
-
-    <div id="userHistory">
         <section id="historyConteiner">
             <table class="historyTable">
                 <thead>
@@ -78,7 +73,7 @@ if (!$league) {
                 <tbody>
                     <?php if (empty($members)): ?>
                         <tr>
-                            <td colspan="3">Nenhum membro na liga.</td>
+                            <td colspan="3">Nenhum membro nesta liga.</td>
                         </tr>
                     <?php else: ?>
                         <?php foreach ($members as $user): ?>
@@ -93,8 +88,6 @@ if (!$league) {
             </table>
         </section>
     </div>
-</div>
-
 
     <div class="crt-overlay"></div>
     <div class="frame"></div>
