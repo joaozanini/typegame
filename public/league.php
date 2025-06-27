@@ -12,6 +12,7 @@ if(isUserInAnyLeague($_SESSION['user_id'])) {
     exit();
 }
 
+require_once __DIR__ . '/../src/Models/League.php';
 $leagues = findLeaguesWithDetails();
 ?>
 
