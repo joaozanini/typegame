@@ -14,6 +14,7 @@ if (isset($_SESSION['user_id'])) {
     <title>Typos!</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/commandBar.css">
 </head>
 <body>
     <div class="conteiner">
@@ -34,5 +35,8 @@ if (isset($_SESSION['user_id'])) {
 
     <div class="crt-overlay"></div>
     <div class="frame"></div>
+
+    <script src="js/commandBar.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
