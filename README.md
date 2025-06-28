@@ -1,7 +1,7 @@
 # TypeGame - Jogo de Digitação
 
 ## Tecnologias
-- PHP 7+
+- PHP
 - MySQL
 - HTML5, CSS3, JavaScript, jQuery
 

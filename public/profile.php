@@ -32,7 +32,13 @@ if (!isset($_SESSION['user_id'])) {
         <div id="userInfo">
             <img src="img/placeholder.png" alt="">
             <div id="userData">
-                <h1 id="username">PLACEHOLDER</h1>
+                <h1 id="username"> 
+                    <?php 
+                    require_once '../src/Models/User.php';
+                    $nickname = $_SESSION['username'];
+                    echo $nickname;
+                    ?>
+                </h1>
                 <h2>Total score: 
                     <?php 
                     require_once '../src/Models/User.php';

@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 
 require_once __DIR__ . '/../src/Models/User.php';
 if(isUserInAnyLeague($_SESSION['user_id'])) {
-    header("Location: /typegame/public/leagueView.php");
+    header("Location: /typegame/public/leagueView.php?id=" . getLeagueIdByUserId($_SESSION['user_id']));
     exit();
 }
 

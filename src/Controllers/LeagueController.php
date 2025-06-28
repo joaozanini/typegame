@@ -70,10 +70,10 @@ function handlePostRequest() {
 
     if ($usersucess) {
         http_response_code(201);
-        echo json_encode(["message" => "Liga criada com sucesso."]);
+        header("Location: /typegame/public/league.php");
     } else {
         http_response_code(500);
-        echo json_encode(["error" => "Erro ao adicionar criador à liga."]);
+        header("Location: /typegame/public/league.php");
     }
 }
 

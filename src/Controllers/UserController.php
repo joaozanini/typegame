@@ -169,3 +169,4 @@ function handleDeleteRequest() {
         echo json_encode(["error" => "Erro ao excluir o usuário."]);
     }
 }
+
