@@ -25,6 +25,7 @@
 5. Acesse `http://localhost/typegame/public/index.php`
 
 ## Autores
-- João Vitor Zanini Pedro (Arquitetura | Back-end | Banco de Dados)
-- Lucas Giuraud (Arquitetura | Banco de Dados )
-- Guilherme Gemniczak da Rocha (Design | Frontend)
+- João Vitor Zanini Pedro (Arquitetura, Back-end, Banco de Dados & Frontend)
+- Lucas Giuraud (Arquitetura & Banco de Dados )
+- Guilherme Gemniczak da Rocha (Design & Frontend)
+- Eduardo Almeida Freitas da Silva Miranda (Design & Frontend
