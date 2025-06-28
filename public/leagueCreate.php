@@ -15,6 +15,7 @@ if (!isset($_SESSION['user_id'])) {
     <title>Create a League </title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/commandBar.css">
     <link rel="stylesheet" href="css/leagueCreate.css">
 </head>
 <body>
@@ -55,7 +56,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <div class="crt-overlay"></div>
     <div class="frame"></div>
-
+    <script src="js/commandBar.js"></script>
     <script src="js/leagueCreate.js"></script>
 </body>
 </html>

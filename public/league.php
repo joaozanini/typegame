@@ -27,6 +27,7 @@ $leagues = findLeaguesWithDetails();
     <title>Leagues!</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/commandBar.css">
     <link rel="stylesheet" href="css/league.css">
 </head>
 
@@ -101,6 +102,7 @@ $leagues = findLeaguesWithDetails();
 
     <div class="crt-overlay"></div>
     <div class="frame"></div>
+    <script src="js/commandBar.js"></script>
     <script src="js/league.js"></script>
 </body>
 

@@ -14,6 +14,7 @@ if (!isset($_SESSION['user_id'])) {
     <title>Profile</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/commandBar.css">
     <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
@@ -50,7 +51,6 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             <div class="buttonConteiner">
                 <input type="button" class="botao" value="Logout" onclick="confirmLogout()">
-                <input type="button" class="botao" value="Edit">
             </div>
         </div>
 
@@ -115,6 +115,9 @@ if (!isset($_SESSION['user_id'])) {
     }
 
     </script>
+
+    <script src="js/commandBar.js"></script>
+    <script src="js/profile.js"></script>
 
 </body>
 </html>

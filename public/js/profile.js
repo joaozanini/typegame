@@ -1,28 +1,25 @@
 const commands = {
   ":game": game,
-  ":profile": profile,
-  ":create": create,
+  ":leagues": league,
+  ":logout": confirmLogout,
   ":help": help,
 };
 
-
-function create(){
-    window.location.href = "leagueCreate.php"
+function confirmLogout() {
+    const confirmacao = confirm("Tem certeza que deseja fazer logout?");
+    if (confirmacao) {
+         window.location.href = "logout.php";
+    }
 }
 
-function enter(){
-    window.location.href = "leagueEnter.php"
-}
 
 function game() {
   window.location.href = "game.php"
 }
 
-function profile() {
-  window.location.href = "profile.php"
+function league() {
+  window.location.href = "league.php"
 }
-
-
 
 function help() {
   if (document.getElementById("helpOverlay")) return;
@@ -37,11 +34,8 @@ function help() {
     <h2>Available Commands</h2>
     <ul>
       <li><code>:game</code> — Goes to game page</li>
-      <li><code>:profile</code> — Goes to profile page</li>
-      <li><code>:create</code> — Create a new league</li>  
-      <li><code>:enter</code> — Mouse only :(</li>   
-      <li><code>:view</code> — Mouse only :(</li>
-      <li><code>:leave</code> — Mouse only :(</li>       
+      <li><code>:leagues</code> — Goes to leagues page</li>
+      <li><code>:logout</code> — Logout</li>
       <li><code>:help</code> — Show this help</li>
     </ul>
   `;
@@ -68,3 +62,4 @@ function help() {
 
   document.addEventListener("keydown", escClose);
 }
+
